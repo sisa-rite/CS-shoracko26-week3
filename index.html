@@ -35,6 +35,8 @@
       p {
         margin: 0;
         font-size: 1rem;
+      }
+      .repo-url {
         word-break: break-all;
       }
       a {
@@ -48,8 +50,95 @@
         max-width: 900px;
         margin-top: 2rem;
       }
+      .answers {
+        width: 100%;
+        max-width: 900px;
+        margin-top: 1rem;
+        text-align: left;
+      }
+      .qa {
+        margin-top: 1.25rem;
+        padding: 1.5rem;
+        border: 1px solid #e2e2e2;
+        border-radius: 12px;
+        background: #fafafa;
+      }
+      .qa h3 {
+        display: flex;
+        gap: 0.75rem;
+        align-items: baseline;
+        margin: 0 0 0.75rem;
+        font-size: 1.15rem;
+        line-height: 1.4;
+      }
+      .qa .num {
+        flex: none;
+        width: 1.75rem;
+        height: 1.75rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #1a5fd0;
+        color: #ffffff;
+        font-size: 0.9rem;
+      }
+      .qa p {
+        margin: 0 0 0.75rem;
+        font-size: 1rem;
+        line-height: 1.6;
+        text-align: left;
+      }
+      .qa p:last-child {
+        margin-bottom: 0;
+      }
+      .qa strong {
+        color: #111111;
+      }
+      .src {
+        display: inline-block;
+        margin-left: 0.35rem;
+        padding: 0.05rem 0.45rem;
+        border-radius: 999px;
+        background: #eceff4;
+        color: #555555;
+        font-size: 0.75rem;
+        vertical-align: middle;
+      }
+      .note {
+        padding: 0.75rem 1rem;
+        border-left: 3px solid #d0342c;
+        background: #fdf3f2;
+        border-radius: 0 8px 8px 0;
+      }
+      h2 {
+        margin: 2.5rem 0 0;
+        font-size: 1.5rem;
+        letter-spacing: -0.01em;
+      }
+      .gallery-intro {
+        margin: 0.5rem 0 0;
+        font-size: 1rem;
+        color: #555555;
+      }
       figure {
         margin: 0;
+        text-align: left;
+      }
+      figure h3 {
+        margin: 0 0 0.75rem;
+        font-size: 1.1rem;
+      }
+      .step {
+        display: inline-block;
+        margin-right: 0.5rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 999px;
+        background: #1a5fd0;
+        color: #ffffff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        vertical-align: middle;
       }
       figure img {
         width: 100%;
@@ -66,15 +155,183 @@
   </head>
   <body>
     <h1>Hello from Simona - week 3 assignment</h1>
-    <p>
+    <p class="repo-url">
       Public repo URL:
       <a href="https://github.com/sisa-rite/CS-shoracko26-week3">
         https://github.com/sisa-rite/CS-shoracko26-week3
       </a>
     </p>
 
+    <h2>Answers for questions</h2>
+
+    <div class="answers">
+      <section class="qa">
+        <h3>
+          <span class="num">1</span>
+          Why do most companies use cloud-based email and calendar services?
+        </h3>
+        <p>
+          Companies use services like Google Workspace or Microsoft 365 because
+          running your own mail server used to mean buying hardware, hiring IT
+          staff to maintain it, applying security patches, and handling backups
+          all by yourself. A cloud provider takes over all of that. The company
+          just pays a monthly fee per user and gets email, a shared calendar,
+          video calls, and document storage that all work together and can be
+          accessed from any device.
+        </p>
+        <p>
+          The main reasons are <strong>lower cost</strong> (no need for an
+          in-house team just to keep email running),
+          <strong>better reliability</strong> (large providers run huge, highly
+          available data centers with strong uptime guarantees),
+          <strong>stronger security</strong> (built-in spam filtering, phishing
+          protection, and two-factor authentication), and
+          <strong>easier collaboration</strong> (shared calendars and real-time
+          document editing across a team).
+        </p>
+        <p>
+          For example, a small company with 20 employees would need a dedicated
+          IT person just to run its own Exchange server, while the same company
+          can subscribe to Microsoft 365 for a fixed monthly cost and get all of
+          that managed automatically.
+        </p>
+      </section>
+
+      <section class="qa">
+        <h3>
+          <span class="num">2</span>
+          What would a mid-size company store in Amazon Glacier, and what not?
+        </h3>
+        <p>
+          Amazon Glacier is designed specifically for archiving data that is
+          accessed very rarely. It is extremely cheap per gigabyte, but
+          retrieving the data back can take anywhere from minutes to several
+          hours, depending on the retrieval option chosen.
+        </p>
+        <p>
+          A company <strong>would store</strong> things like old financial
+          records it is legally required to keep for 7-10 years but never
+          actually opens, database backups kept only for disaster-recovery
+          purposes, old system logs, or historical data that must be retained
+          but is not actively used.
+        </p>
+        <p>
+          A company <strong>would not store</strong> active, frequently accessed
+          data there - such as the current production database or files
+          employees open daily - because Glacier's slow retrieval time makes it
+          impractical for anything that needs to be available quickly.
+        </p>
+        <p>
+          Other large cloud backup/archive providers include Azure Archive
+          Storage, Google Cloud Storage (Coldline/Archive tier), and Backblaze
+          B2.
+        </p>
+      </section>
+
+      <section class="qa">
+        <h3>
+          <span class="num">3</span>
+          Well-known Amazon S3 data leak incidents
+        </h3>
+        <p>
+          <strong>Verizon (2017):</strong> A partner company set up an S3 bucket
+          without proper security, exposing personal data of about 6 million
+          Verizon customers, including names, addresses, and account PINs.
+          <span class="src">Bitdefender</span>
+        </p>
+        <p>
+          <strong>Voter database leak (2017):</strong> A political data
+          analytics firm misconfigured an S3 bucket, exposing personal
+          information of nearly 200 million US voters.
+          <span class="src">AWSInsider</span>
+        </p>
+        <p>
+          <strong>Accenture (2017):</strong> A misconfigured bucket exposed
+          master access keys for Accenture's AWS account, meaning an attacker
+          could potentially have taken control of much more than just the leaked
+          files. <span class="src">Bitdefender</span>
+        </p>
+        <p>
+          What went wrong in all these cases was fundamentally the same: the
+          bucket's access permission was set to allow public/anonymous read
+          access, usually by mistake or because the default settings were not
+          reviewed carefully.
+        </p>
+        <p class="note">
+          <strong>Automated search tools (do not use - illegal):</strong> Tools
+          exist that scan the internet for public S3 buckets by guessing common
+          naming patterns (like companyname-backup or companyname-data), similar
+          to how the search engine Shodan scans for exposed devices. Their
+          existence highlights why bucket permissions must be checked carefully,
+          not why they are safe to use.
+        </p>
+      </section>
+
+      <section class="qa">
+        <h3>
+          <span class="num">4</span>
+          Comparing cloud storage providers (home users)
+        </h3>
+        <p>
+          Comparing Google One, Dropbox, and OneDrive for personal use: Google
+          Drive offers the most generous free tier at 15 GB, compared to
+          OneDrive's 5 GB and Dropbox's 2 GB, though that 15 GB is shared across
+          Gmail and Google Photos too. On paid plans, Google One is generally
+          the cheapest entry point, and at the popular 2 TB tier Google One
+          costs $9.99/month versus Dropbox's $11.99/month for the same storage.
+          OneDrive is rarely bought as a standalone product for home users - it
+          usually comes bundled with a Microsoft 365 subscription, which also
+          includes desktop Office apps, making it a good deal if you already use
+          Word and Excel. <span class="src">Thedrive</span>
+          <span class="src">Getpricepulse</span>
+        </p>
+        <p>
+          For a student or home user who is already invested in one ecosystem
+          (Gmail vs. Outlook), the existing ecosystem usually matters more than
+          the small price differences between providers.
+        </p>
+      </section>
+
+      <section class="qa">
+        <h3>
+          <span class="num">5</span>
+          Comparing web hosting providers (not CDN)
+        </h3>
+        <p>
+          Classic web hosting providers - as opposed to a PaaS platform like
+          Rahti - rent out server space for a website, typically with a control
+          panel (like cPanel), a free domain, and a basic set of tools included.
+        </p>
+        <p>
+          <strong>Hostinger</strong> is known for very low starting prices and
+          is popular with students and small personal sites, though support and
+          performance scale down at the cheapest tiers.
+          <strong>Bluehost</strong> is officially recommended by WordPress and
+          integrates closely with it, making it a common choice for blogs, but
+          it is typically pricier at renewal than the introductory price
+          suggests. <strong>GoDaddy</strong> is one of the largest and most
+          recognizable hosting brands, offering domains and hosting together,
+          but is often criticized for aggressive upselling during checkout.
+        </p>
+        <p>
+          Most of these providers offer tiers ranging from basic shared hosting
+          (cheapest, but your site shares server resources with many others) up
+          to VPS or dedicated hosting (more expensive, but with dedicated
+          resources) - a company choosing between them should think about
+          expected traffic, not just the advertised starting price, since shared
+          hosting can slow down significantly once a site grows.
+        </p>
+      </section>
+    </div>
+
+    <h2>Documented process</h2>
+    <p class="gallery-intro">
+      Screenshots of the steps I took to complete the week 3 assignment.
+    </p>
+
     <div class="gallery">
       <figure>
+        <h3><span class="step">Step 1</span>Enable Allas in my CSC project</h3>
         <img
           src="https://a3s.fi/swift/v1/shoracko-week3-media/enable-allas.png"
           alt="Enabling the Allas service in my CSC project"
@@ -86,6 +343,7 @@
       </figure>
 
       <figure>
+        <h3><span class="step">Step 2</span>Create a new bucket on Allas</h3>
         <img
           src="https://a3s.fi/swift/v1/shoracko-week3-media/new-bucket.png"
           alt="Creating a new bucket on Allas"
@@ -97,6 +355,7 @@
       </figure>
 
       <figure>
+        <h3><span class="step">Step 3</span>Sample of my code</h3>
         <img
           src="https://a3s.fi/swift/v1/shoracko-week3-media/my-code.png"
           alt="Sample of my code"
